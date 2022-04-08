@@ -1,4 +1,4 @@
-
+import json
 import logging
 
 import aiogram.utils.markdown as md
@@ -10,14 +10,16 @@ from aiogram.dispatcher.filters.state import State, StatesGroup
 from aiogram.types import ParseMode
 from aiogram.utils import executor
 
-import Ya_found_2
-import Ya_found
+#import Ya_found_2
+#import Ya_found
+import Ya_DB_finder
+import BD_emulator
 
 logging.basicConfig(level=logging.INFO)
 import config
 
 logging.basicConfig(level=logging.INFO)
-
+test=0
 API_TOKEN = config.token
 bot = Bot(token=API_TOKEN)
 
@@ -25,6 +27,9 @@ bot = Bot(token=API_TOKEN)
 storage = MemoryStorage()
 dp = Dispatcher(bot, storage=storage)
 
+
+list_db = ["first_name", "full_name", "email","phone_number", "address_city", "address_street", "address_house", "address_entrance", "address_floor", "address_office", "address_comment"]
+str_db  = "first_name", "full_name", "email","phone_number", "address_city", "address_street", "address_house", "address_entrance", "address_floor", "address_office", "address_comment"
 
 # States
 class Form(StatesGroup):
@@ -71,11 +76,20 @@ async def process_name(message: types.Message, state: FSMContext):
 
     await Form.next()
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True, selective=True)
-    markup.add("phone_number", "first_name", "full_name", "email")
+    nums=0
+    while nums < len(list_db):
+    
+        try:
+           markup.add(list_db[nums], list_db[nums+1],list_db[nums+2])
+        except:
+            markup.add(list_db[nums], list_db[nums+1])
+         
+        nums+=3
     markup.add("other")
 
     await message.reply("What type?", reply_markup=markup)
     markup = types.ReplyKeyboardRemove()
+    #await message.reply("", reply_markup=markup)
     #message.reply("Wait a minute. Try find this")
     #await message.reply("What type?")
 
@@ -90,7 +104,7 @@ async def process_age(message: types.Message, state: FSMContext):
 
 
 
-@dp.message_handler(lambda message: message.text not in ["phone_number", "first_name" ,"full_name", "email", "other"], state=Form.type_collum)
+@dp.message_handler(lambda message: message.text not in list_db, state=Form.type_collum)
 async def process_gender_invalid(message: types.Message):
     """
     In this example gender has to be one of: Male, Female, Other.
@@ -104,17 +118,47 @@ async def process_gender(message: types.Message, state: FSMContext):
         data['type_collum'] = message.text
 
         # Remove keyboard
-
-        await bot.send_message(
-            message.chat.id,
-            md.text(md.text('Waiting...'), sep='\n'))
-
-        output = Ya_found.find_name(data['regexp'], data['type_collum'])
+        await message.reply('Waiting...', reply_markup=types.ReplyKeyboardRemove())
+        #await bot.send_message(
+            #message.chat.id,
+            #md.text(md.text('Waiting...'), sep='\n'))
+        #markup = types.ReplyKeyboardMarkup(resize_keyboard=True, selective=True)
+        #markup = types.ReplyKeyboardRemove()
+        #output = Ya_found.find_name(data['regexp'], data['type_collum'])
+        if test == 0:
+            output = json.loads(Ya_DB_finder.finding(data['regexp'], data['type_collum']))
+        else:
+            output = json.loads(BD_emulator.finding(data['regexp'], data['type_collum']))
         # And send message
-        for outputs in output:
+        if len(output) != 0:
+            for person in output:
+                print('='*20)
+                print(person)
+                iformation = ""
+                for key, values in person.items():
+                    if key != '_id':
+                        iformation = str(iformation + '*' + str(key)  + '*' +  ': ' + '`' +str(values) + '`' + '\n')
+                        #iformation = ( iformation,
+                        #    hcode(str(key)), '--',
+                        #    code(str(values)))
+            
+                await bot.send_message(
+                    message.chat.id,
+                    (iformation), parse_mode = 'Markdown')
+                try:
+                    await bot.send_location(
+                    message.chat.id,
+                    person['location_latitude'], person['location_longitude'])
+                except:
+                    await bot.send_message(
+                    message.chat.id,
+                    md.text(md.text('No location data'), sep='\n'))
+                
+        else:
             await bot.send_message(
-                message.chat.id,
-                md.text(md.text(outputs), sep='\n'))
+                    message.chat.id,
+                    md.text(md.text("Nothing"), sep='\n'))
+
 
     # Finish conversation
     await state.finish()
