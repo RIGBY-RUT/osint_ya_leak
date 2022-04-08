@@ -1,5 +1,5 @@
 # osint_ya_leak
-$$$$$$$$$$$$$$$$$BWohbdddddbh*&@$$$$$$$$$$$$$$$$@WobqmZOOZwph*8$$$$$$$$$$$$$$$$$
+
 $$$$$$$$$$$$8awQYzzzzzzzzzzzzzzzU0poB$$$$$$@*mUnfttttttttttttttjcLd&$$$$$$$$$$$$
 $$$$$$$$$#qJzzzzzzzzzzzzzzzzzzzzzzzzzLb8BdUjttttttttttttttttttttttttnQo$$$$$$$$$
 $$$$$$@kCzzzzzzzzzzzzzzzzzzzzzzzzzzzzzcxfttttttttttttttttttttttttttttttup@$$$$$$
@@ -19,7 +19,4 @@ $$$$$&Ozzzzzzzzj}}}/zzzzzzz{}}\zzzzzzujtttttttttttttttttttttttttttttttttfC&$$$$$
 $$$$$$$&wYzzzzzzzzzzzzzzzzzzzzzzzzzzzzzXXftttttttttttttttttttttttttttfr0&$$$$$$$
 $$$$$$$$$@*wUzzzzzzzzzzzzzzzzzzzzzzzLpW$$8pUjtttttttttttttttttttttfuQa$$$$$$$$$$
 $$$$$$$$$$$$$8odZLYzzzzzzzzzzzUQmb#B$$$$$$$$$Md0YujtttttttttfrcCmh8$$$$$$$$$$$$$
-$$$$$$$$$$$$$$$$$$$@8&WWWWW&%$$$$$$$$$$$$$$$$$$$$$$B8M###MW8$$$$$$$$$$$$$$$$$$$$
-$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
