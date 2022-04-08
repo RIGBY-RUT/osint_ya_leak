@@ -1,0 +1,9 @@
+csv
+pandas
+pathlib
+threading
+time
+queue
+pymongo
+aiogram
+logging
