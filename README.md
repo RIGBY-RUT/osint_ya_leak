@@ -7,7 +7,7 @@
 Для запуска необходимо:
 * установить все зависимости из "requirements.txt" для python3, 
 * Telegram token прописать в файле config.py,
-* Mongodb должна содержать данные из утечки Yandex delivery в формате представленом в "BD_emulator.py" (желательно избавиться от паразитных символов ',' и '"'). Для добавления из CLI можно воспользоваться ```for file in ../sourse/*; do   mongoimport --host=127.0.0.1 -d Ya_leaks -c mod_3 --type csv --file "$file" --headerline;   done```. В случае, если есть необходимость поиска в файлах, можно воспользоватся одним из скриптов Ya_found_*.
+* Mongodb должна содержать данные из утечки Yandex delivery в формате представленом в (BD_emulator.py)[https://github.com/RIGBY-RUT/osint_ya_leak/blob/e9aa059a6c4f599439b67e999aeed830a16311ce/BD_emulator.py] (желательно избавиться от паразитных символов ',' и '"'). Для добавления из CLI можно воспользоваться ```for file in ../sourse/*; do   mongoimport --host=127.0.0.1 -d Ya_leaks -c mod_3 --type csv --file "$file" --headerline;   done```. В случае, если есть необходимость поиска в файлах, можно воспользоватся одним из скриптов Ya_found_*.
 
 Telegram bot поддерживает вледующий тип запросов:
 * ввод email в формате (^[-\w\.]+@([-\w]+\.)+[-\w]{2,4}$) - поиск по email
